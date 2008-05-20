@@ -1,0 +1,2 @@
+useDynLib("steepness")
+export(getDij,getw1,getl1,getw2,getl2,getDS,getNormDS,getStp,getinterc,steeptest,getplot)

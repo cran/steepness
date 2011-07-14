@@ -1,28 +1,29 @@
-\name{getStp}
+\name{getPij}
 
-\alias{getStp}
+\alias{getPij}
 
-\title{Steepness measure of dominance hierarchies -Stp-}
+\title{Matrix of win proportions -Pij-}
 
 \description{
-Function to obtain hierarchy's steepness measure from the observed sociomatrix.}
+Function to obtain matrix of win proportions from the observed sociomatrix.
+}
 
 \usage{
-   getStp(X, method=c("Dij","Pij"))
+   getPij(X, names=NULL)
 }
 
 \arguments{
-  \item{X}{Empirical sociomatrix containing wins-losses frequencies in dyadic encounters. The matrix must be square and numeric.}
-  \item{method}{A character string indicating which dyadic dominance measure is to be used for the computation of David's scores. One of "Dij" or "Pij", can be abbreviated.}
+  \item{X}{Empirical sociomatrix containing wins-losses frequencies in dyadic encounters.}
+  \item{names}{Character vector with the names of individuals. This vector is NULL by default}
 }
 
 \details{
-\code{getStp} is the absolute value of the slope of the best-fitted line between the normalized David's scores and the rank dominance in a decreasing order. The regression is obtained by Ordinary Least Squares method.
+\code{getPij} is only applied for square matrices in which the set of \emph{n} actors is also the set of \emph{n} partners. The matrices must also be numeric.
 }
 
 \value{
 
-\item{getStp}{Steepness measure based on dyadic dominance indices corrected for chance or based on the matrix of win proportions, depending on the method specified.}
+\item{Pij}{Matrix of observed win proportions.}
 }
 
 \references{
@@ -34,7 +35,7 @@ de Vries, H., Stevens, J. M. G., & Vervaecke, H. (2006). Measuring and testing t
 David Leiva \email{dleivaur@ub.edu} & Han de Vries \email{J.deVries1@uu.nl}.
 }
 
-\seealso{ \code{\link{getDij}}, \code{\link{getPij}}, \code{\link{getNormDS}}.
+\seealso{ \code{\link{steeptest}}.
 }
 
 \examples{
@@ -51,11 +52,17 @@ X <- matrix(c(0,58,50,61,32,37,29,39,25,8,0,22,22,9,27,20,10,48,
 
 individuals <- c("V","VS","B","FJ","PR","VB","TOR","MU","ZV")
 
-print(getStp(X,method="Dij"),digits=3)
- 
+res <- getPij(X,individuals)
+
+print(res,digits=3)
+
 }
 
 \keyword{misc}
 
 \keyword{htest}
 
+
+\keyword{misc}
+
+\keyword{htest}

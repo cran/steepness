@@ -1,14 +1,14 @@
-\name{getNormDS}
+\name{getwl}
 
-\alias{getNormDS}
+\alias{getwl}
 
-\title{Normalized David's scores -NormDS-}
+\title{Win-loss measures at individual level}
 
 \description{
-Function to obtain normalized David's scores from the observed sociomatrix.}
+Function to obtain win and loss measures at individual level from the observed sociomatrix.}
 
 \usage{
-   getNormDS(X, names=NULL, method=c("Dij","Pij"))
+   getwl(X, names=NULL, method=c("Dij","Pij"))
 }
 
 \arguments{
@@ -18,12 +18,17 @@ Function to obtain normalized David's scores from the observed sociomatrix.}
 }
 
 \details{
-\code{getNormDS} is obtained by means of the following expression: \eqn{NormDS = (DS + N(N-1)/2)/N}
+By means of the empirical sociomatrix of wins and losses this function computes several win-loss measures at individual level. Specifically, it computes \emph{w}, \emph{weighted.w}, \emph{l} and \emph{weighted.l}. \emph{w} is the sum of individuals' dyadic dominances Dij or the sum of proportions of wins Pij by rows, depending on the specification of the \emph{method}. \emph{weighted.w} measures is the sum of individuals' Dij or Pij values weighted by the \emph{w} values of their interactants. \emph{l} is the sum of individuals' dyadic dominance indices Dij or the sum of individuals' proportions of wins Pij by columns. And finally, \emph{weighted.l} is the columns sum of individuals' Dij or Pij values weighted by the \emph{l} values of their interactants. These measures are used when computing David's scores.
+
 }
 
 \value{
 
-\item{NormDS}{Normalized David's scores based on dyadic dominance indices corrected for chance or based on the win proportions, depending on the method specified.}
+  The result is a data frame with the following components: 
+  \item{w}{Sum of dyadic dominance indices Dij or proportions of wins Pij by rows.}
+  \item{weighted.w}{Weighted sum of dyadic dominance indices Dij or proportions of wins Pij.}
+  \item{l}{Sum of dyadic dominance indices Dij or proportions of wins Pij by columns.}
+  \item{weighted.l}{Weighted sum of dyadic dominance indices Dij or proportions of wins Pij.}
 }
 
 \references{
@@ -53,13 +58,11 @@ X <- matrix(c(0,58,50,61,32,37,29,39,25,8,0,22,22,9,27,20,10,48,
 
 individuals <- c("V","VS","B","FJ","PR","VB","TOR","MU","ZV")
 
-res <- getNormDS(X,names=individuals,method="Dij")
+res <- getwl(X,names=individuals,method="Dij")
 
 print(res,digits=3)
 
 }
 
 \keyword{misc}
-
-\keyword{htest}
 

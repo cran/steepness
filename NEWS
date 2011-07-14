@@ -1,0 +1,20 @@
+-----------
+VERSION 0.2
+-----------
+
+* A new function, getOrderedMatrix, for ordering the empirical matrix according individuals' NormDS values is included in this new version.
+* getinterc is eliminated in this version.
+* Methods for quantifying and testing steepness from matrices of win proportions are implemented.
+* getw1, getw2, getl1 and getl2 functions in previous version are gathered now in a unique function called getwl.
+* "for" loops eliminated in all the functions of steepness package.
+* All functions are now constrained to be used for square and numerical matrices.
+* cross-calling to steepness functions is avoided in the new version.
+* A more efficient way of computing steepness measure, via lm function, is now implemented in getStp, getplot and steeptest functions. 
+* Some modifications of the C routine included in the package.
+* Improvements in Rd files. New examples for illustrative purposes.
+
+-----------
+VERSION 0.1
+-----------
+
+First public version in CRAN

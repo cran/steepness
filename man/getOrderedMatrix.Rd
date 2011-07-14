@@ -1,28 +1,32 @@
-\name{getStp}
+\name{getOrderedMatrix}
 
-\alias{getStp}
+\alias{getOrderedMatrix}
 
-\title{Steepness measure of dominance hierarchies -Stp-}
+\title{Ordered matrix according to NormDS values}
 
 \description{
-Function to obtain hierarchy's steepness measure from the observed sociomatrix.}
+Function to order the observed matrix of dyadic dominance encounters according to the individuals' NormDS values.
+}
 
 \usage{
-   getStp(X, method=c("Dij","Pij"))
+   getOrderedMatrix(X, names=NULL, method=c("Dij","Pij"))
 }
 
 \arguments{
-  \item{X}{Empirical sociomatrix containing wins-losses frequencies in dyadic encounters. The matrix must be square and numeric.}
+  \item{X}{Empirical sociomatrix containing wins-losses frequencies in dyadic encounters.}
+  \item{names}{Character vector with the names of individuals. This vector is NULL by default}
   \item{method}{A character string indicating which dyadic dominance measure is to be used for the computation of David's scores. One of "Dij" or "Pij", can be abbreviated.}
 }
 
 \details{
-\code{getStp} is the absolute value of the slope of the best-fitted line between the normalized David's scores and the rank dominance in a decreasing order. The regression is obtained by Ordinary Least Squares method.
+\code{getOrderedMatrix} is only applied for square matrices in which the set of \emph{n} actors is also the set of \emph{n} partners. The matrices must also be numeric.
 }
 
 \value{
 
-\item{getStp}{Steepness measure based on dyadic dominance indices corrected for chance or based on the matrix of win proportions, depending on the method specified.}
+\item{ordered.matrix}{Matrix of observed dyadic dominance encounters ordered according to the individuals' NormDS values.}
+\item{ordered.names}{Vector of individuals' names ordered according to their NormDS values.}
+\item{order.seq}{Sequence used in the order of the matrix of dyadic encounters and the vector of names.}
 }
 
 \references{
@@ -34,7 +38,7 @@ de Vries, H., Stevens, J. M. G., & Vervaecke, H. (2006). Measuring and testing t
 David Leiva \email{dleivaur@ub.edu} & Han de Vries \email{J.deVries1@uu.nl}.
 }
 
-\seealso{ \code{\link{getDij}}, \code{\link{getPij}}, \code{\link{getNormDS}}.
+\seealso{ \code{\link{getNormDS}}.
 }
 
 \examples{
@@ -51,11 +55,17 @@ X <- matrix(c(0,58,50,61,32,37,29,39,25,8,0,22,22,9,27,20,10,48,
 
 individuals <- c("V","VS","B","FJ","PR","VB","TOR","MU","ZV")
 
-print(getStp(X,method="Dij"),digits=3)
- 
+res <- getOrderedMatrix(X,individuals,method="Dij")$ordered.matrix
+
+print(res,digits=3)
+
 }
 
 \keyword{misc}
 
 \keyword{htest}
 
+
+\keyword{misc}
+
+\keyword{htest}

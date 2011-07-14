@@ -10,26 +10,43 @@
 /* Declaration of functions */
 
 void steep(double *X,int *nrow, int *rep,double *res1);
-double getDij(double *mat_X, double *dyadc, double *Dij, int *maxrow, int *maxcol);
-double getw1d(double *mat_X, double *dyadc, double *Dij, double *w1d, int *maxrow, int *maxcol);
-double getw2dmat(double *mat_X, double *dyadc, double *Dij, double *w1d, double *w2dmat, int *maxrow, int *maxcol);
-double getw2d(double *mat_X, double *dyadc, double *Dij, double *w1d, double *w2dmat,double *w2d, int *maxrow, int *maxcol);
-double getl1d(double *mat_X, double *dyadc, double *Dij, double *l1d, int *maxrow, int *maxcol);
-double getl2dmat(double *mat_X, double *dyadc, double *Dij, double *l1d, double *l2dmat, int *maxrow, int *maxcol);
-double getl2d(double *mat_X, double *dyadc, double *Dij, double *l1d, double *l2dmat,double *l2d, int *maxrow, int *maxcol);
-double getDSd(double *mat_X, double *dyadc, double *Dij, double *w1d, double *w2dmat, double *w2d, double *l1d,
+void steep2(double *X,int *nrow, int *rep,double *res1);
+void getDij(double *mat_X, double *dyadc, double *Dij, int *maxrow, int *maxcol);
+void getPij(double *mat_X, double *dyadc, double *Pij, int *maxrow, int *maxcol);
+void getw1d(double *mat_X, double *dyadc, double *Dij, double *w1d, int *maxrow, int *maxcol);
+void getw1p(double *mat_X, double *dyadc, double *Pij, double *w1p, int *maxrow, int *maxcol);
+void getw2dmat(double *mat_X, double *dyadc, double *Dij, double *w1d, double *w2dmat, int *maxrow, int *maxcol);
+void getw2pmat(double *mat_X, double *dyadc, double *Pij, double *w1p, double *w2pmat, int *maxrow, int *maxcol);
+void getw2d(double *mat_X, double *dyadc, double *Dij, double *w1d, double *w2dmat,double *w2d, int *maxrow, int *maxcol);
+void getw2p(double *mat_X, double *dyadc, double *Pij, double *w1p, double *w2pmat,double *w2p, int *maxrow, int *maxcol);
+void getl1d(double *mat_X, double *dyadc, double *Dij, double *l1d, int *maxrow, int *maxcol);
+void getl1p(double *mat_X, double *dyadc, double *Pij, double *l1p, int *maxrow, int *maxcol);
+void getl2dmat(double *mat_X, double *dyadc, double *Dij, double *l1d, double *l2dmat, int *maxrow, int *maxcol);
+void getl2pmat(double *mat_X, double *dyadc, double *Pij, double *l1p, double *l2pmat, int *maxrow, int *maxcol);
+void getl2d(double *mat_X, double *dyadc, double *Dij, double *l1d, double *l2dmat,double *l2d, int *maxrow, int *maxcol);
+void getl2p(double *mat_X, double *dyadc, double *Pij, double *l1p, double *l2pmat,double *l2p, int *maxrow, int *maxcol);
+void getDSd(double *mat_X, double *dyadc, double *Dij, double *w1d, double *w2dmat, double *w2d, double *l1d,
 	      double *l2dmat, double *l2d, double *DSd, int *maxrow, int *maxcol);
-double getNormDSd(double *mat_X, double *dyadc, double *Dij, double *w1d, double *w2dmat, double *w2d, double *l1d,
+void getDSp(double *mat_X, double *dyadc, double *Pij, double *w1p, double *w2pmat, double *w2p, double *l1p,
+     double *l2pmat, double *l2p, double *DSp, int *maxrow, int *maxcol);
+void getNormDSd(double *mat_X, double *dyadc, double *Dij, double *w1d, double *w2dmat, double *w2d, double *l1d,
 		  double *l2dmat, double *l2d, double *DSd, double *NormDSd,  int *maxrow, int *maxcol);
-double getNDSdsort(double *mat_X, double *dyadc, double *Dij, double *w1d, double *w2dmat, double *w2d, double *l1d,
+void getNormDSp(double *mat_X, double *dyadc, double *Pij, double *w1p, double *w2pmat, double *w2p, double *l1p,
+        double *l2pmat, double *l2p, double *DSp, double *NormDSp,  int *maxrow, int *maxcol);
+void getNDSdsort(double *mat_X, double *dyadc, double *Dij, double *w1d, double *w2dmat, double *w2d, double *l1d,
  		   double *l2dmat, double *l2d, double *DSd, double *NormDSd, double *NDSdsort, int *maxrow, int *maxcol);
+void getNDSpsort(double *mat_X, double *dyadc, double *Pij, double *w1p, double *w2pmat, double *w2p, double *l1p,
+         double *l2pmat, double *l2p, double *DSp, double *NormDSp, double *NDSpsort, int *maxrow, int *maxcol);
 double getStpd (double *mat_X, double *dyadc, double *Dij, double *w1d, double *w2dmat, double *w2d,
 		   double *l1d, double *l2dmat, double *l2d, double *DSd, double *NormDSd, double *NDSdsort,
+		   double *rnk, int *maxrow, int *maxcol);
+double getStpp (double *mat_X, double *dyadc, double *Pij, double *w1p, double *w2pmat, double *w2p,
+       double *l1p, double *l2pmat, double *l2p, double *DSp, double *NormDSp, double *NDSpsort,
 		   double *rnk, int *maxrow, int *maxcol);
 
 /* Function to compute matrix of dyadic dominance indices corrected for chance - Dij - */
 
-   double getDij(double *mat_X, double *dyadc, double *Dij, int *maxrow, int *maxcol) 
+   void getDij(double *mat_X, double *dyadc, double *Dij, int *maxrow, int *maxcol) 
    {
    int i, j;
 
@@ -47,17 +64,30 @@ double getStpd (double *mat_X, double *dyadc, double *Dij, double *w1d, double *
          else
            {Dij[i**maxcol+j] = 0.;}
       }
-
-   return(*Dij);
    }
 
-/* Function to compute vector of sums of dyadic dominance indices by rows */
+/* Function to compute matrix of proportions of wins - Pij */
+
+   void getPij(double *mat_X, double *dyadc, double *Pij, int *maxrow, int *maxcol) 
+   {
+   int i, j;
+   for (i= 0; i< *maxrow; i++)
+      for (j= 0; j< *maxcol; j++)
+      {
+         if ( ( i != j ) & (dyadc[i**maxcol+j] != 0.) )
+     {Pij[i**maxcol+j] = mat_X[i**maxcol+j]/dyadc[i**maxcol+j];}	
+         else
+           {Pij[i**maxcol+j] = 0.;}
+      }
+   }
+
+/* Function to compute vector of sums of dyadic dominance indices by rows based on Dij */
    
-   double getw1d(double *mat_X, double *dyadc, double *Dij, double *w1d, int *maxrow, int *maxcol)
+   void getw1d(double *mat_X, double *dyadc, double *Dij, double *w1d, int *maxrow, int *maxcol)
    {
    int i, j;
 
-   *Dij = getDij(mat_X,dyadc,Dij,maxrow,maxcol);
+   getDij(mat_X,dyadc,Dij,maxrow,maxcol);
 
    for (i= 0; i< *maxrow; i++)
       w1d[i] = 0.;
@@ -65,51 +95,91 @@ double getStpd (double *mat_X, double *dyadc, double *Dij, double *w1d, double *
    for (i= 0; i< *maxrow; i++)
       for (j= 0; j< *maxcol; j++)
          w1d[i] += Dij[i**maxcol+j];
-
-   return(*w1d);
    }
 
-/* Function to compute matrix of weighted dyadic dominance indices by rows - w2dmat - */
-
-   double getw2dmat(double *mat_X, double *dyadc, double *Dij, double *w1d, double *w2dmat, int *maxrow, int *maxcol)
+/* Function to compute vector of sums of dyadic dominance indices by rows based on Pij */
+   
+   void getw1p(double *mat_X, double *dyadc, double *Pij, double *w1p, int *maxrow, int *maxcol)
    {
    int i, j;
 
-   *Dij = getDij(mat_X,dyadc,Dij,maxrow,maxcol);
-   *w1d = getw1d(mat_X,dyadc,Dij,w1d,maxrow,maxcol);
+   getPij(mat_X,dyadc,Pij,maxrow,maxcol);
+
+   for (i= 0; i< *maxrow; i++)
+      w1p[i] = 0.;
+
+   for (i= 0; i< *maxrow; i++)
+      for (j= 0; j< *maxcol; j++)
+         w1p[i] += Pij[i**maxcol+j];
+   }
+
+/* Function to compute matrix of weighted dyadic dominance indices by rows based on Dij - w2dmat - */
+
+   void getw2dmat(double *mat_X, double *dyadc, double *Dij, double *w1d, double *w2dmat, int *maxrow, int *maxcol)
+   {
+   int i, j;
+
+   getDij(mat_X,dyadc,Dij,maxrow,maxcol);
+   getw1d(mat_X,dyadc,Dij,w1d,maxrow,maxcol);
 
    for (i= 0; i< *maxrow; i++)
       for (j= 0; j< *maxcol; j++)
          w2dmat[i**maxcol+j] = Dij[i**maxcol+j]*w1d[j];
-
-   return(*w2dmat);
    }
 
-/* Function to compute vector of weighted sum of dominance indices by rows - w2d - */
+/* Function to compute matrix of weighted dyadic dominance indices by rows based on Pij - w2pmat - */
 
-   double getw2d(double *mat_X, double *dyadc, double *Dij, double *w1d, double *w2dmat,double *w2d, int *maxrow, int *maxcol)
+   void getw2pmat(double *mat_X, double *dyadc, double *Pij, double *w1p, double *w2pmat, int *maxrow, int *maxcol)
    {
    int i, j;
 
-   *w2dmat = getw2dmat(mat_X,dyadc,Dij,w1d,w2dmat,maxrow,maxcol);
+   getPij(mat_X,dyadc,Pij,maxrow,maxcol);
+   getw1p(mat_X,dyadc,Pij,w1p,maxrow,maxcol);
+
+   for (i= 0; i< *maxrow; i++)
+      for (j= 0; j< *maxcol; j++)
+         w2pmat[i**maxcol+j] = Pij[i**maxcol+j]*w1p[j];
+   }
+
+/* Function to compute vector of weighted sum of dominance indices by rows based on Dij - w2d - */
+
+   void getw2d(double *mat_X, double *dyadc, double *Dij, double *w1d, double *w2dmat,double *w2d, int *maxrow, int *maxcol)
+   {
+   int i, j;
+
+   getw2dmat(mat_X,dyadc,Dij,w1d,w2dmat,maxrow,maxcol);
 
    for (i= 0; i< *maxrow; i++)
       w2d[i] = 0.;
    
    for (i= 0; i< *maxrow; i++)
       for (j= 0; j< *maxcol; j++)
-         w2d[i] += w2dmat[i**maxcol+j];
-   
-   return(*w2d);
+         w2d[i] += w2dmat[i**maxcol+j];   
    }
 
-/* Function to compute vector of sums of dyadic dominance indices by columns - l1d - */
-   
-   double getl1d(double *mat_X, double *dyadc, double *Dij, double *l1d, int *maxrow, int *maxcol)
+/* Function to compute vector of weighted sum of dominance indices by rows based on Pij - w2p - */
+
+   void getw2p(double *mat_X, double *dyadc, double *Pij, double *w1p, double *w2pmat,double *w2p, int *maxrow, int *maxcol)
    {
    int i, j;
 
-   *Dij = getDij(mat_X,dyadc,Dij,maxrow,maxcol);
+   getw2pmat(mat_X,dyadc,Pij,w1p,w2pmat,maxrow,maxcol);
+
+   for (i= 0; i< *maxrow; i++)
+      w2p[i] = 0.;
+   
+   for (i= 0; i< *maxrow; i++)
+      for (j= 0; j< *maxcol; j++)
+         w2p[i] += w2pmat[i**maxcol+j];   
+   }
+
+/* Function to compute vector of sums of dyadic dominance indices by columns based on Dij - l1d - */
+   
+   void getl1d(double *mat_X, double *dyadc, double *Dij, double *l1d, int *maxrow, int *maxcol)
+   {
+   int i, j;
+
+   getDij(mat_X,dyadc,Dij,maxrow,maxcol);
 
    for (i= 0; i< *maxrow; i++)
       l1d[i] = 0.;
@@ -117,33 +187,60 @@ double getStpd (double *mat_X, double *dyadc, double *Dij, double *w1d, double *
    for (j= 0; j< *maxcol; j++)
       for (i= 0; i< *maxrow; i++)
          l1d[i] += Dij[j**maxcol+i];
-
-   return(*l1d);
    }
 
-/* Function to compute matrix of weighted sum of dyadic dominance indices by columns- l2dmat - */
-
-   double getl2dmat(double *mat_X, double *dyadc, double *Dij, double *l1d, double *l2dmat, int *maxrow, int *maxcol)
+/* Function to compute vector of sums of dyadic dominance indices by columns based on Pij - l1p - */
+   
+   void getl1p(double *mat_X, double *dyadc, double *Pij, double *l1p, int *maxrow, int *maxcol)
    {
    int i, j;
 
-   *Dij = getDij(mat_X,dyadc,Dij,maxrow,maxcol);
-   *l1d = getl1d(mat_X,dyadc,Dij,l1d,maxrow,maxcol);
+   getPij(mat_X,dyadc,Pij,maxrow,maxcol);
+
+   for (i= 0; i< *maxrow; i++)
+      l1p[i] = 0.;
+
+   for (j= 0; j< *maxcol; j++)
+      for (i= 0; i< *maxrow; i++)
+         l1p[i] += Pij[j**maxcol+i];
+   }
+
+/* Function to compute matrix of weighted sum of dyadic dominance indices by columns based on Dij - l2dmat - */
+
+   void getl2dmat(double *mat_X, double *dyadc, double *Dij, double *l1d, double *l2dmat, int *maxrow, int *maxcol)
+   {
+   int i, j;
+
+   getDij(mat_X,dyadc,Dij,maxrow,maxcol);
+   getl1d(mat_X,dyadc,Dij,l1d,maxrow,maxcol);
 
    for (i= 0; i< *maxrow; i++)
       for (j= 0; j< *maxcol; j++)
          l2dmat[i**maxcol+j] = Dij[i**maxcol+j]*l1d[i];
-
-   return(*l2dmat);
    }
 
-/* Function to compute vector of weighted sum of dyadic dominance indices by columns - l2d - */
+/* Function to compute matrix of weighted sum of dyadic dominance indices by columns based on Pij - l2pmat - */
 
-   double getl2d(double *mat_X, double *dyadc, double *Dij, double *l1d, double *l2dmat,double *l2d, int *maxrow, int *maxcol)
+   void getl2pmat(double *mat_X, double *dyadc, double *Pij, double *l1p, double *l2pmat, int *maxrow, int *maxcol)
    {
    int i, j;
 
-   *l2dmat = getl2dmat(mat_X,dyadc,Dij,l1d,l2dmat,maxrow,maxcol);
+   getPij(mat_X,dyadc,Pij,maxrow,maxcol);
+   getl1p(mat_X,dyadc,Pij,l1p,maxrow,maxcol);
+
+   for (i= 0; i< *maxrow; i++)
+      for (j= 0; j< *maxcol; j++)
+         l2pmat[i**maxcol+j] = Pij[i**maxcol+j]*l1p[i];
+   }
+
+
+/* Function to compute vector of weighted sum of dyadic dominance indices by columns based on Dij- l2d - */
+
+   void getl2d(double *mat_X, double *dyadc, double *Dij, double *l1d, double *l2dmat,double *l2d, int *maxrow, int *maxcol)
+   {
+   int i, j;
+
+   getl2dmat(mat_X,dyadc,Dij,l1d,l2dmat,maxrow,maxcol);
 
    for (i= 0; i< *maxrow; i++)
       l2d[i] = 0.;
@@ -151,30 +248,57 @@ double getStpd (double *mat_X, double *dyadc, double *Dij, double *w1d, double *
    for (j= 0; j< *maxcol; j++)
       for (i= 0; i< *maxrow; i++)
          l2d[i] += l2dmat[j**maxcol+i];
-
-   return(*l2d);
    }
 
-/* Function to compute vector of David's scores (DS) based on dyadic dominance indices - DSd - */
+/* Function to compute vector of weighted sum of dyadic dominance indices by columns based on Pij- l2p - */
 
-   double getDSd(double *mat_X, double *dyadc, double *Dij, double *w1d, double *w2dmat, double *w2d, double *l1d,
+   void getl2p(double *mat_X, double *dyadc, double *Pij, double *l1p, double *l2pmat,double *l2p, int *maxrow, int *maxcol)
+   {
+   int i, j;
+
+   getl2pmat(mat_X,dyadc,Pij,l1p,l2pmat,maxrow,maxcol);
+
+   for (i= 0; i< *maxrow; i++)
+      l2p[i] = 0.;
+   
+   for (j= 0; j< *maxcol; j++)
+      for (i= 0; i< *maxrow; i++)
+         l2p[i] += l2pmat[j**maxcol+i];
+   }
+
+/* Function to compute vector of David's scores (DS) based on dyadic dominance indices corrected for chance - DSd - */
+
+   void getDSd(double *mat_X, double *dyadc, double *Dij, double *w1d, double *w2dmat, double *w2d, double *l1d,
 		 double *l2dmat, double *l2d, double *DSd, int *maxrow, int *maxcol)
    {
    int i;
-   *w1d = getw1d(mat_X,dyadc,Dij,w1d,maxrow,maxcol);
-   *w2d = getw2d(mat_X,dyadc,Dij,w1d,w2dmat,w2d,maxrow,maxcol);
-   *l1d = getl1d(mat_X,dyadc,Dij,l1d,maxrow,maxcol);
-   *l2d = getl2d(mat_X,dyadc,Dij,l1d,l2dmat,l2d,maxrow,maxcol);
+   getw1d(mat_X,dyadc,Dij,w1d,maxrow,maxcol);
+   getw2d(mat_X,dyadc,Dij,w1d,w2dmat,w2d,maxrow,maxcol);
+   getl1d(mat_X,dyadc,Dij,l1d,maxrow,maxcol);
+   getl2d(mat_X,dyadc,Dij,l1d,l2dmat,l2d,maxrow,maxcol);
 
    for (i= 0; i< *maxrow; i++)
       DSd[i] = w1d[i]+w2d[i]-l1d[i]-l2d[i];
+   }
 
-   return(*DSd);
+/* Function to compute vector of David's scores (DS) based on proportions of wins - DSp - */
+
+   void getDSp(double *mat_X, double *dyadc, double *Pij, double *w1p, double *w2pmat, double *w2p, double *l1p,
+  	 double *l2pmat, double *l2p, double *DSp, int *maxrow, int *maxcol)
+   {
+   int i;
+   getw1p(mat_X,dyadc,Pij,w1p,maxrow,maxcol);
+   getw2p(mat_X,dyadc,Pij,w1p,w2pmat,w2p,maxrow,maxcol);
+   getl1p(mat_X,dyadc,Pij,l1p,maxrow,maxcol);
+   getl2p(mat_X,dyadc,Pij,l1p,l2pmat,l2p,maxrow,maxcol);
+
+   for (i= 0; i< *maxrow; i++)
+      DSp[i] = w1p[i]+w2p[i]-l1p[i]-l2p[i];
    }
    
 /* Function to compute vector of normalized David`s scores based on dyadic dominance indices - NormDSd - */
 
-   double getNormDSd(double *mat_X, double *dyadc, double *Dij, double *w1d, double *w2dmat, double *w2d, double *l1d,
+   void getNormDSd(double *mat_X, double *dyadc, double *Dij, double *w1d, double *w2dmat, double *w2d, double *l1d,
 		    double *l2dmat, double *l2d, double *DSd, double *NormDSd,  int *maxrow, int *maxcol)
    {
    int i;
@@ -182,23 +306,37 @@ double getStpd (double *mat_X, double *dyadc, double *Dij, double *w1d, double *
 
    maxDS = *maxrow*(*maxrow-1)/2;
 
-   *DSd = getDSd(mat_X,dyadc,Dij,w1d,w2dmat,w2d,l1d,l2dmat,l2d,DSd,maxrow,maxcol);
+   getDSd(mat_X,dyadc,Dij,w1d,w2dmat,w2d,l1d,l2dmat,l2d,DSd,maxrow,maxcol);
 
    for (i= 0; i< *maxrow; i++)
       NormDSd[i] = (DSd[i]+maxDS)/(*maxrow);
-      
-   return (*NormDSd);
+   }
+
+/* Function to compute vector of normalized David`s scores based on proportions of wins - NormDSp - */
+
+   void getNormDSp(double *mat_X, double *dyadc, double *Pij, double *w1p, double *w2pmat, double *w2p, double *l1p,
+  	    double *l2pmat, double *l2p, double *DSp, double *NormDSp,  int *maxrow, int *maxcol)
+   {
+   int i;
+   double maxDS;
+
+   maxDS = *maxrow*(*maxrow-1)/2;
+
+   getDSp(mat_X,dyadc,Pij,w1p,w2pmat,w2p,l1p,l2pmat,l2p,DSp,maxrow,maxcol);
+
+   for (i= 0; i< *maxrow; i++)
+      NormDSp[i] = (DSp[i]+maxDS)/(*maxrow);
    }
 
 /* Function to sort the vector NormDSd in descending order */
 
-   double getNDSdsort(double *mat_X, double *dyadc, double *Dij, double *w1d, double *w2dmat, double *w2d, double *l1d,
+   void getNDSdsort(double *mat_X, double *dyadc, double *Dij, double *w1d, double *w2dmat, double *w2d, double *l1d,
  		    double *l2dmat, double *l2d, double *DSd, double *NormDSd, double *NDSdsort, int *maxrow, int *maxcol)
    {
    int i, j;
    double temp;
 
-   *NormDSd = getNormDSd(mat_X,dyadc,Dij,w1d,w2dmat,w2d,l1d,l2dmat,l2d,DSd,NormDSd,maxrow,maxcol);
+   getNormDSd(mat_X,dyadc,Dij,w1d,w2dmat,w2d,l1d,l2dmat,l2d,DSd,NormDSd,maxrow,maxcol);
 
    for (i= 0; i< *maxrow; i++)
       NDSdsort[i] = NormDSd[i];
@@ -215,8 +353,33 @@ double getStpd (double *mat_X, double *dyadc, double *Dij, double *w1d, double *
          }
      }
    }
-   
-   return(*NDSdsort);
+   }
+
+/* Function to sort the vector NormDSp in descending order */
+
+   void getNDSpsort(double *mat_X, double *dyadc, double *Pij, double *w1p, double *w2pmat, double *w2p, double *l1p,
+   	    double *l2pmat, double *l2p, double *DSp, double *NormDSp, double *NDSpsort, int *maxrow, int *maxcol)
+   {
+   int i, j;
+   double temp;
+
+   getNormDSp(mat_X,dyadc,Pij,w1p,w2pmat,w2p,l1p,l2pmat,l2p,DSp,NormDSp,maxrow,maxcol);
+
+   for (i= 0; i< *maxrow; i++)
+      NDSpsort[i] = NormDSp[i];
+
+   for (j= 0; j< *maxrow; j++)
+   {
+      for (i= 0; i< *maxrow; i++)
+      {
+         if (NDSpsort[i] < NDSpsort[i+1])
+	 {
+           temp = NDSpsort[i+1];
+           NDSpsort[i+1] = NDSpsort[i];
+           NDSpsort[i]= temp;
+         }
+     }
+   }
    }
 
 /* Function to compute the steepness measure based on dyadic dominance indices corrected for chance - Stpd - */
@@ -228,7 +391,7 @@ double getStpd (double *mat_X, double *dyadc, double *Dij, double *w1d, double *
    int i;
    double crossp, sumNDSdsort, sumrnk, crosss, sumsq, sqsum, Stpd;
 
-   *NDSdsort = getNDSdsort(mat_X,dyadc,Dij,w1d,w2dmat,w2d,l1d,l2dmat,l2d,DSd,NormDSd,NDSdsort,maxrow,maxcol);
+   getNDSdsort(mat_X,dyadc,Dij,w1d,w2dmat,w2d,l1d,l2dmat,l2d,DSd,NormDSd,NDSdsort,maxrow,maxcol);
    
    for (i= 0; i< *maxrow; i++)
       rnk[i] = i+1;
@@ -258,8 +421,49 @@ double getStpd (double *mat_X, double *dyadc, double *Dij, double *w1d, double *
    return (Stpd);
    }
 
-void steep(double *X,int *nrow, int *rep,double *res1)
+/* Function to compute the steepness measure based on proportions of wins - Stpp - */
+
+   double getStpp (double *mat_X, double *dyadc, double *Pij, double *w1p, double *w2pmat, double *w2p,
+  	   double *l1p, double *l2pmat, double *l2p, double *DSp, double *NormDSp, double *NDSpsort,
+		   double *rnk, int *maxrow, int *maxcol)
    {
+   int i;
+   double crossp, sumNDSpsort, sumrnk, crosss, sumsq, sqsum, Stpp;
+
+   getNDSpsort(mat_X,dyadc,Pij,w1p,w2pmat,w2p,l1p,l2pmat,l2p,DSp,NormDSp,NDSpsort,maxrow,maxcol);
+   
+   for (i= 0; i< *maxrow; i++)
+      rnk[i] = i+1;
+
+   crossp = 0.;
+   for (i= 0; i< *maxrow; i++)
+      crossp += NDSpsort[i]*rnk[i];
+
+   sumNDSpsort = 0.;
+   for (i= 0; i< *maxrow; i++)
+      sumNDSpsort += NDSpsort[i];
+   
+   sumrnk = 0.;
+   for (i= 0; i< *maxrow; i++)
+      sumrnk += rnk[i];
+   
+   crosss = sumNDSpsort*sumrnk;
+
+   sumsq = 0.;
+   for (i= 0; i< *maxrow; i++)
+      sumsq += rnk[i]*rnk[i];
+
+   sqsum = pow(sumrnk,2);
+
+   Stpp = fabs((*maxrow*crossp-crosss)/(*maxrow*sumsq-sqsum));
+
+   return (Stpp);
+   }
+
+/* Function to simulate random sampling distribution of steepness measure based on Dij */
+
+  void steep(double *X,int *nrow, int *rep,double *res1)
+  {
    int i, j, m, maxrow, maxcol, iter;
    double *mat_X, *matgen, *dyadc, * Dij, *w1d, *w2dmat, *w2d, *l1d, *l2dmat, *l2d, *DSd,
 	  *NormDSd, *NDSdsort, *rnk, Stpdsim;
@@ -445,3 +649,194 @@ void steep(double *X,int *nrow, int *rep,double *res1)
    free(dyadc);
    free(mat_X);
 }
+
+/* Function to simulate random sampling distribution of steepness measure based on Pij */
+
+  void steep2(double *X,int *nrow, int *rep,double *res1)
+  {
+   int i, j, m, maxrow, maxcol, iter;
+   double *mat_X, *matgen, *dyadc, * Pij, *w1p, *w2pmat, *w2p, *l1p, *l2pmat, *l2p, *DSp,
+    *NormDSp, *NDSpsort, *rnk, Stppsim;
+
+/* Set a random seed for the random numbers routine */
+
+   GetRNGstate();
+
+/* Set the size of the matrices */
+
+   maxrow = maxcol = *nrow;
+
+/* Allocate as a matrix size of vector X */
+
+   mat_X = malloc(maxrow*maxcol*sizeof(double));
+   if (mat_X == NULL)
+   {
+     exit(0);
+   }
+
+   m = 0.;
+   for (i= 0; i< maxrow; i++)
+      for (j= 0; j< maxcol; j++)
+      {   
+         mat_X[i*maxcol+j] = X[m];
+         m++;
+      }
+
+/* Allocate in memory matrix of dyadic interaction frequencies */
+
+   dyadc = malloc(maxrow*maxcol*sizeof(double));
+   if (dyadc == NULL)
+   {
+     exit(0);
+   }
+
+   for (i= 0; i< maxrow; i++)
+      for (j= 0; j< maxcol; j++)
+         dyadc[i*maxcol+j] = mat_X[i*maxcol+j] + mat_X[j*maxcol+i];
+
+/* Allocate in memory matrix Pij */
+
+   Pij = malloc(maxrow*maxcol*sizeof(double));
+
+   if (Pij == NULL)
+   {
+     exit(0);
+   } 
+
+/* Allocate in memory size of vector w1p */
+
+   w1p = calloc(maxrow, sizeof(double));
+
+   if (w1p == NULL)
+   {
+     exit(0);
+   }
+
+/* Allocate in memory size of matrix w2pmat */
+
+   w2pmat = malloc(maxrow*maxcol*sizeof(double));
+
+   if (w2pmat == NULL)
+   {
+     exit(0);
+   }
+
+/* Allocate in memory size of vector w2p */
+
+   w2p = calloc(maxrow, sizeof(double));
+
+   if (w2p == NULL)
+   {
+     exit(0);
+   }
+
+/* Allocate in memory size of vector l1p */
+
+   l1p = calloc(maxrow, sizeof(double));
+
+   if (l1p == NULL)
+   {
+     exit(0);
+   }
+
+/* Allocate in memory size of matrix l2pmat */
+
+   l2pmat = malloc(maxrow*maxcol*sizeof(double));
+
+   if (l2pmat == NULL)
+   {
+     exit(0);
+   } 
+
+/* Allocate im memory size of vector l2p */
+
+   l2p = calloc(maxrow, sizeof(double));
+
+   if (l2p == NULL)
+   {
+     exit(0);
+   }
+
+/* Allocate in memory size of vector DSp */
+
+   DSp = calloc(maxrow, sizeof(double));
+
+   if (DSp == NULL)
+   {
+     exit(0);
+   } 
+
+/* Allocate in memory size of vector NormDSp */
+
+   NormDSp = calloc(maxrow, sizeof(double));
+
+   if (NormDSp == NULL)
+   {
+     exit(0);
+   }
+
+/* Allocate in memory size of vector NDSpsort */
+
+   NDSpsort = calloc(maxrow, sizeof(double));
+
+   if (NDSpsort == NULL)
+   {
+     exit(0);
+   }
+
+/* Allocate in memory size of vector rnk */
+
+   rnk = calloc(maxrow, sizeof(double));
+
+   if (rnk == NULL)
+   {
+     exit(0);
+   }
+
+/* Allocate size of random matrix to be generated*/
+
+   matgen = malloc(maxrow*maxcol*sizeof(double));
+   if (matgen == NULL)
+   {
+     exit(0);
+   }
+
+/* Generate rep random matrices in order to carry out the test */
+   
+   for (iter= 0; iter< *rep; iter++) 
+   {
+      for (i= 0; i< maxrow; i++)
+         for (j= 0; j< maxcol; j++)
+         {    
+            if (i < j){matgen[i*maxcol+j]=floor(runif(0,dyadc[i*maxcol+j]+1));}
+            if (i > j){matgen[i*maxcol+j]=dyadc[i*maxcol+j]-matgen[j*maxcol+i];}
+            if (i == j){matgen[i*maxcol+j]=0.;}
+         }     
+
+      Stppsim = getStpp(matgen,dyadc,Pij,w1p,w2pmat,w2p,l1p,l2pmat,l2p,DSp,NormDSp,NDSpsort,rnk,&maxrow,&maxcol);
+      res1[iter] = Stppsim;
+
+   }   
+
+/* Reset the random seed used in the routine */
+
+   PutRNGstate();
+
+/* Deallocate the matrices used in the routine */
+
+   free(matgen);
+   free(rnk);
+   free(NDSpsort);
+   free(NormDSp);
+   free(DSp);
+   free(l2p);
+   free(l2pmat);
+   free(l1p);
+   free(w2p);
+   free(w2pmat);
+   free(w1p);
+   free(Pij);
+   free(dyadc);
+   free(mat_X);
+}
+

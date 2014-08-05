@@ -1,2 +1,2 @@
-useDynLib("steepness")
-export(getDij, getPij,getwl,getDS,getNormDS,getOrderedMatrix,getStp,steeptest,getplot)
+useDynLib(steepness)
+export(getDij,getPij,getwl,getDS,getNormDS,getOrderedMatrix,getStp,steeptest,getplot)

@@ -479,10 +479,6 @@ double getStpp (double *mat_X, double *dyadc, double *Pij, double *w1p, double *
 /* Allocate as a matrix size of vector X */
 
    mat_X = malloc(maxrow*maxcol*sizeof(double));
-   if (mat_X == NULL)
-   {
-     exit(0);
-   }
 
    m = 0.;
    for (i= 0; i< maxrow; i++)
@@ -495,10 +491,6 @@ double getStpp (double *mat_X, double *dyadc, double *Pij, double *w1p, double *
 /* Allocate in memory matrix of dyadic interaction frequencies */
 
    dyadc = malloc(maxrow*maxcol*sizeof(double));
-   if (dyadc == NULL)
-   {
-     exit(0);
-   }
 
    for (i= 0; i< maxrow; i++)
       for (j= 0; j< maxcol; j++)
@@ -508,108 +500,49 @@ double getStpp (double *mat_X, double *dyadc, double *Pij, double *w1p, double *
 
    Dij = malloc(maxrow*maxcol*sizeof(double));
 
-   if (Dij == NULL)
-   {
-     exit(0);
-   } 
-
 /* Allocate in memory size of vector w1d */
 
    w1d = calloc(maxrow, sizeof(double));
-
-   if (w1d == NULL)
-   {
-     exit(0);
-   }
 
 /* Allocate in memory size of matrix w2dmat */
 
    w2dmat = malloc(maxrow*maxcol*sizeof(double));
 
-   if (w2dmat == NULL)
-   {
-     exit(0);
-   }
-
 /* Allocate in memory size of vector w2d */
 
    w2d = calloc(maxrow, sizeof(double));
-
-   if (w2d == NULL)
-   {
-     exit(0);
-   }
 
 /* Allocate in memory size of vector l1d */
 
    l1d = calloc(maxrow, sizeof(double));
 
-   if (l1d == NULL)
-   {
-     exit(0);
-   }
-
 /* Allocate in memory size of matrix l2dmat */
 
    l2dmat = malloc(maxrow*maxcol*sizeof(double));
-
-   if (l2dmat == NULL)
-   {
-     exit(0);
-   } 
 
 /* Allocate im memory size of vector l2d */
 
    l2d = calloc(maxrow, sizeof(double));
 
-   if (l2d == NULL)
-   {
-     exit(0);
-   }
-
 /* Allocate in memory size of vector DSd */
 
    DSd = calloc(maxrow, sizeof(double));
-
-   if (DSd == NULL)
-   {
-     exit(0);
-   } 
 
 /* Allocate in memory size of vector NormDSd */
 
    NormDSd = calloc(maxrow, sizeof(double));
 
-   if (NormDSd == NULL)
-   {
-     exit(0);
-   }
-
 /* Allocate in memory size of vector NDSdsort */
 
    NDSdsort = calloc(maxrow, sizeof(double));
-
-   if (NDSdsort == NULL)
-   {
-     exit(0);
-   }
 
 /* Allocate in memory size of vector rnk */
 
    rnk = calloc(maxrow, sizeof(double));
 
-   if (rnk == NULL)
-   {
-     exit(0);
-   }
-
 /* Allocate size of random matrix to be generated*/
 
    matgen = malloc(maxrow*maxcol*sizeof(double));
-   if (matgen == NULL)
-   {
-     exit(0);
-   }
 
 /* Generate rep random matrices in order to carry out the test */
    
@@ -669,10 +602,6 @@ double getStpp (double *mat_X, double *dyadc, double *Pij, double *w1p, double *
 /* Allocate as a matrix size of vector X */
 
    mat_X = malloc(maxrow*maxcol*sizeof(double));
-   if (mat_X == NULL)
-   {
-     exit(0);
-   }
 
    m = 0.;
    for (i= 0; i< maxrow; i++)
@@ -685,10 +614,6 @@ double getStpp (double *mat_X, double *dyadc, double *Pij, double *w1p, double *
 /* Allocate in memory matrix of dyadic interaction frequencies */
 
    dyadc = malloc(maxrow*maxcol*sizeof(double));
-   if (dyadc == NULL)
-   {
-     exit(0);
-   }
 
    for (i= 0; i< maxrow; i++)
       for (j= 0; j< maxcol; j++)
@@ -698,108 +623,49 @@ double getStpp (double *mat_X, double *dyadc, double *Pij, double *w1p, double *
 
    Pij = malloc(maxrow*maxcol*sizeof(double));
 
-   if (Pij == NULL)
-   {
-     exit(0);
-   } 
-
 /* Allocate in memory size of vector w1p */
 
    w1p = calloc(maxrow, sizeof(double));
-
-   if (w1p == NULL)
-   {
-     exit(0);
-   }
 
 /* Allocate in memory size of matrix w2pmat */
 
    w2pmat = malloc(maxrow*maxcol*sizeof(double));
 
-   if (w2pmat == NULL)
-   {
-     exit(0);
-   }
-
 /* Allocate in memory size of vector w2p */
 
    w2p = calloc(maxrow, sizeof(double));
-
-   if (w2p == NULL)
-   {
-     exit(0);
-   }
 
 /* Allocate in memory size of vector l1p */
 
    l1p = calloc(maxrow, sizeof(double));
 
-   if (l1p == NULL)
-   {
-     exit(0);
-   }
-
 /* Allocate in memory size of matrix l2pmat */
 
    l2pmat = malloc(maxrow*maxcol*sizeof(double));
-
-   if (l2pmat == NULL)
-   {
-     exit(0);
-   } 
 
 /* Allocate im memory size of vector l2p */
 
    l2p = calloc(maxrow, sizeof(double));
 
-   if (l2p == NULL)
-   {
-     exit(0);
-   }
-
 /* Allocate in memory size of vector DSp */
 
    DSp = calloc(maxrow, sizeof(double));
-
-   if (DSp == NULL)
-   {
-     exit(0);
-   } 
 
 /* Allocate in memory size of vector NormDSp */
 
    NormDSp = calloc(maxrow, sizeof(double));
 
-   if (NormDSp == NULL)
-   {
-     exit(0);
-   }
-
 /* Allocate in memory size of vector NDSpsort */
 
    NDSpsort = calloc(maxrow, sizeof(double));
-
-   if (NDSpsort == NULL)
-   {
-     exit(0);
-   }
 
 /* Allocate in memory size of vector rnk */
 
    rnk = calloc(maxrow, sizeof(double));
 
-   if (rnk == NULL)
-   {
-     exit(0);
-   }
-
 /* Allocate size of random matrix to be generated*/
 
    matgen = malloc(maxrow*maxcol*sizeof(double));
-   if (matgen == NULL)
-   {
-     exit(0);
-   }
 
 /* Generate rep random matrices in order to carry out the test */
    

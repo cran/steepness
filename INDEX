@@ -1,0 +1,13 @@
+getDS                   David's scores -DS-
+getDij                  Dyadic dominance index corrected for chance
+                        -Dij-
+getNormDS               Normalized David's scores -NormDS-
+getOrderedMatrix        Ordered matrix according to NormDS values
+getPij                  Matrix of win proportions -Pij-
+getStp                  Steepness measure of dominance hierarchies
+                        -Stp-
+getplot                 Steepness plot
+getwl                   Win-loss measures at individual level
+steepness               Testing Steepness of Dominance Hierarchies
+steeptest               Statistical significance for steepness of
+                        dominance hierarchies statistic

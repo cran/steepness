@@ -1,3 +1,9 @@
+-------------
+VERSION 0.2-1
+-------------
+*Some improvements in steep.c file for compatibility with R>=2.15.3.
+*.First.Lib replaced by .onLoad function.
+
 -----------
 VERSION 0.2
 -----------

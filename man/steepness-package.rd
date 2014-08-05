@@ -10,9 +10,9 @@ Steepness is a package that computes steepness as a property of dominance hierar
 \details{
 \tabular{ll}{
 Package: \tab steepness\cr
-Version: \tab 0.2\cr
-Date: \tab 2011-08-06\cr
-Depends: \tab >= 2.10.1\cr
+Version: \tab 0.2-1\cr
+Date: \tab 2017-07-05\cr
+Depends: \tab >= 2.15.1\cr
 License: \tab GPL version 2 or newer\cr
 }
 

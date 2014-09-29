@@ -1,11 +1,14 @@
 # Function to estimate p values for the steepness index based on the Dij or Pij measures #
 
-steeptest <- function(X,rep,names=NULL,method=c("Dij","Pij"),order=TRUE,option.console=FALSE){
+steeptest <- function(X,rep,names=NULL,method=c("Dij","Pij"),order=TRUE){
 
 # Is matrix X square? #
 
   if (nrow(X) != ncol(X))
     return("Error: Matrix X is not square and can not be analyzed")
+  
+  if ( is.na(X) || !is.numeric(X))
+    return("Error: Sociomatrix must be numeric");  
    
 # Limit the number of replications #
 
@@ -43,7 +46,7 @@ steeptest <- function(X,rep,names=NULL,method=c("Dij","Pij"),order=TRUE,option.c
   interc <- lm(SortNormDS$x ~ rnk)$coefficients[1]
   names(interc)<-NULL
 
-# Carrying out the statistical test by means a C program #
+# Carrying out the statistical test by means of a C program #
 
   vecX <- c(t(X))
 
@@ -63,11 +66,9 @@ steeptest <- function(X,rep,names=NULL,method=c("Dij","Pij"),order=TRUE,option.c
 
   Stpsim <- out$res1;
 
-# Computation of some summary statistics and print results #
-
   if (is.null(names)) names <- paste('Ind.',1:nrow(X))
-  else names <- names
-  
+    else names <- names
+
   if (order == TRUE){
     names <- names[SortNormDS$ix]
     DS <- array(DS[SortNormDS$ix],dim=c(nrow(X),1))
@@ -78,82 +79,16 @@ steeptest <- function(X,rep,names=NULL,method=c("Dij","Pij"),order=TRUE,option.c
     dimnames(Dij) <- list(c(names),c(names))
   if (method == "Pij")
     dimnames(Pij) <- list(c(names),c(names))
+  
   dimnames(DS) <- list(c(names),"DS Values")
-  dimnames(NormDS) <- list(c(names),"NormDS Values")
+  dimnames(NormDS) <- list(c(names),"NormDS Values") 
 
-  data <- array(dim=c(rep,1))
-  data[,1] <- Stpsim
-  colnames(data) <- c("Stpsim")
-  Stp_rightpvalue <- (sum(Stp <= data[,"Stpsim"])+1)/(rep+1)
-  Stp_leftpvalue <- (sum(Stp >= data[,"Stpsim"])+1)/(rep+1)
-  results <- array((c(Stp, Stp_rightpvalue,Stp_leftpvalue,rep,mean(data[,"Stpsim"]),var(data[,"Stpsim"]),
-  min(data[,"Stpsim"]),quantile(data[,"Stpsim"],.25,names=F),quantile(data[,"Stpsim"],.50,names=F),
-  quantile(data[,"Stpsim"],.75,names=F),max(data[,"Stpsim"]))),dim=c(11,1))
-  dimnames(results) <- list(c("Empirical value", "Right p-value", "Left p-value", "N simulations", "Mean",
-  "Variance","Minimum", "25th Pctl","50th Pctl", "75th Pctl","Maximum"),"Stp")
-  options(digits=6,scipen=999)
-  results <-round(as.data.frame(results),round(log(results[4,],10)))
-  if (option.console == TRUE){
-    cat("    ","\n")
-    cat("    ","\n")
-    cat("    ","\n")
-    if (method == "Dij"){
-    cat("RESULTS OF STEEPNESS ANALYSIS OF THE MATRIX OF DYADIC DOMINANCES CORRECTED FOR CHANCE","\n")
-    cat("=====================================================================================","\n")}
-    if (method == "Pij"){
-    cat("RESULTS OF STEEPNESS ANALYSIS OF THE MATRIX OF WIN PROPORTIONS","\n")    
-    cat("==============================================================","\n")}
-    cat("    ","\n")
-    cat("    ","\n")
-    if (method == "Dij")
-    cat("Dij","\n")
-    if (method == "Pij")
-    cat("Pij","\n")    
-    cat("===","\n")
-    cat("    ","\n")
-    if (method == "Dij")
-    print(Dij)
-    if (method == "Pij")
-    print(Pij)
-    cat("    ","\n")
-    cat("    ","\n")
-    cat("DAVID'S SCORES","\n")
-    cat("==============","\n")
-    cat("    ","\n")
-    print(DS)
-    cat("    ","\n")
-    cat("    ","\n")
-    cat("NORMALIZED DAVID'S SCORES","\n")
-    cat("=========================","\n")
-    cat("    ","\n")
-    print(NormDS)
-    cat("    ","\n")
-    cat("    ","\n")
-    cat("STEEPNESS","\n")
-    cat("=========","\n")
-    cat("    ","\n")
-    cat("Slope (absolute) = ",Stp,"\n")
-    cat("    ","\n")
-    cat("    ","\n")
-    cat("INTERCEPT","\n")
-    cat("=========","\n")
-    cat("    ","\n")
-    cat("Intercept = ",interc,"\n")
-    cat("    ","\n")
-    cat("    ","\n")
-    cat("    ","\n")
-    if (method == "Dij")
-    cat("SUMMARY STATISTICS OF THE RANDOMIZATION PROCEDURE FOR TESTING STEEPNESS BASED ON THE Dij MEASURES","\n")
-    if (method == "Pij")
-    cat("SUMMARY STATISTICS OF THE RANDOMIZATION PROCEDURE FOR TESTING STEEPNESS BASED ON THE Pij MEASURES","\n")
-    cat("=================================================================================================","\n")
-    print(results)
-  }
-  else
-  {
-    if (method == "Dij") matdom <- Dij
+  if (method == "Dij") matdom <- Dij
     else matdom <- Pij
-    list(dyadic.dominance=matdom,david.scores=DS,norm.david.scores=NormDS,steepness=Stp,steep.right.pvalue=Stp_rightpvalue,
-         steep.left.pvalue=Stp_leftpvalue,intercept=interc,results=results)
-  }
+
+  Stpresults <- list(call=match.call(),names = names,
+  rep=rep,method=method,matdom=matdom,DS=DS,
+  NormDS=NormDS,Stp=Stp,interc=interc,Stpsim=Stpsim)
+  class(Stpresults) <- "steeptest"
+  Stpresults
 }

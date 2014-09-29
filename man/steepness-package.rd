@@ -10,9 +10,9 @@ Steepness is a package that computes steepness as a property of dominance hierar
 \details{
 \tabular{ll}{
 Package: \tab steepness\cr
-Version: \tab 0.2-1\cr
-Date: \tab 2017-07-05\cr
-Depends: \tab >= 2.15.1\cr
+Version: \tab 0.2-2\cr
+Date: \tab 2014-29-09\cr
+Depends: \tab >= 3.1.0\cr
 License: \tab GPL version 2 or newer\cr
 }
 
@@ -25,7 +25,6 @@ getOrderedMatrix  Ordered matrix according to NormDS values
 getPij            Matrix of proportions of wins -Pij-
 getStp            Hierarchy's steepness measure -Stp-
 getwl             Several win and loss measures at individual level
-getplot           Steepness plot
 steeptest         Statistical significance for steepness statistic
 }
 }
@@ -39,5 +38,5 @@ de Vries, H., Stevens, J. M. G., & Vervaecke, H. (2006). Measuring and testing t
 }
 \keyword{package}
 \seealso{
-For more information see: \code{\link{getDij}}, \code{\link{getDS}}, \code{\link{getNormDS}}, \code{\link{getOrderedMatrix}}, \code{\link{getPij}}, \code{\link{getStp}}, \code{\link{getwl}}, \code{\link{getplot}}, \code{\link{steeptest}}.
+For more information see: \code{\link{getDij}}, \code{\link{getDS}}, \code{\link{getNormDS}}, \code{\link{getOrderedMatrix}}, \code{\link{getPij}}, \code{\link{getStp}}, \code{\link{getwl}}, \code{\link{steeptest}}.
 }

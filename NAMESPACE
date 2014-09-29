@@ -1,2 +1,6 @@
 useDynLib(steepness)
-export(getDij,getPij,getwl,getDS,getNormDS,getOrderedMatrix,getStp,steeptest,getplot)
+export(getDij,getPij,getwl,getDS,getNormDS,getOrderedMatrix,getStp,steeptest)
+
+S3method(print,steeptest)
+S3method(summary,steeptest)
+S3method(plot,steeptest)

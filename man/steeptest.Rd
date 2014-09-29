@@ -10,7 +10,7 @@ Estimates statistical significance for steepness measure on the basis of dyadic 
 
 
 \usage{
-   steeptest(X, rep, names=NULL, method=c("Dij","Pij"), order=TRUE, option.console=FALSE)
+   steeptest(X, rep, names=NULL, method=c("Dij","Pij"), order=TRUE)
 }
 
 \arguments{
@@ -19,11 +19,10 @@ Estimates statistical significance for steepness measure on the basis of dyadic 
   \item{names}{Character vector with individuals' names.}
   \item{method}{A character string indicating which dyadic dominance measure is to be used for the computation of David's scores. One of "Dij" or "Pij", can be abbreviated.}
   \item{order}{Logical, if TRUE, results for Dij, DS and NormDS are ordered according to the individuals' NormDS values. TRUE by default.}
-  \item{option.console}{Logical, if TRUE, results of the procedure will be printed in R console. FALSE by default.}
 }
 
 \details{
-\code{steeptest} estimates statistical significance for steepness measures based on dyadic dominance index corrected for chance \emph{Dij} or based on the matrix of win proportions \emph{Pij}, depending on the \code{method} specified. This procedure simulates a number of sociomatrices under a uniform distribution by means of callings to C routine \emph{steep}, then computes steepness based on \emph{Dij} or \emph{Pij}. Specifically, it computes normalized David's scores, see \code{\link{getNormDS}} for more details. Then it computes the steepness measure based on these indices, see \code{\link{getStp}}. After \code{rep} simulations the sampling distribution for the statistic (\emph{Stp}) is estimated. Then statistical significance is computed as follows:
+\code{steeptest} estimates statistical significance for steepness measures based on dyadic dominance index corrected for chance \emph{Dij} or based on the matrix of win proportions \emph{Pij}, depending on the \code{method} specified. This procedure simulates a number of sociomatrices under a uniform distribution by means of callings to C routine \emph{steep}, then computes steepness based on \emph{Dij} or \emph{Pij}. Specifically, it computes normalized David's scores, see \code{\link{getNormDS}} for more details. Then it computes the steepness measure based on these indices, see \code{\link{getStp}}. After \code{rep} simulations the sampling distribution for the statistic (\emph{Stp}) is estimated. Then statistical significance is computed as follows when results are shown by means of \code{summary} method:
 \eqn{p=NS+1/NOS+1}
 Where \emph{NS} is computed as:
 \enumerate{
@@ -34,16 +33,17 @@ And \emph{NOS} represents the number of simulated values.
 }
 
 \value{
-\code{steeptest} returns a list containing the following components:
-
-\item{dyadic.dominance}{If \code{method} is set to be \emph{Dij} the function returns the matrix of observed dyadic dominance indices corrected for chance. If \code{method} is \emph{Pij} the matrix of proportions of wins is returned as a part of the output.}
-\item{david.scores}{David's scores based on \emph{Dij} or \emph{Pij}, depending on the specification of the \code{method}.}
-\item{norm.david.scores}{Normalized David's scores based on dyadic dominance indices corrected for chance or on proportions of wins in dyadic encounters.}
-\item{steepness}{Steepness value based on Normalized David's scores.}
-\item{steep.right.pvalue}{Right-tailed p value for the empirical steepness value under the null hypothesis of random wins.}
-\item{steep.left.pvalue}{Left-tailed p value for the empirical steepness value under the null hypothesis of random wins.}
-\item{intercept}{Intercept of the fitted line based on Normalized David's scores.}
-\item{results}{The function provides results of the randomization procedure for the steepness measure based on \emph{NormDS}.}
+\code{steeptest} returns an object of class steeptest containing the following components:
+  \item{call }{Function call.}
+\item{names}{Character vector with individuals' names.}
+\item{method}{A character string indicating which dyadic dominance measure is used for the computation of David's scores.}
+\item{rep}{Number of simulations for carrying out the randomization test.}
+\item{matdom}{If \code{method} is set to be \emph{Dij} the function returns the matrix of observed dyadic dominance indices corrected for chance. If \code{method} is \emph{Pij} the matrix of proportions of wins is returned as a part of the output.}
+\item{DS}{David's scores based on \emph{Dij} or \emph{Pij}, depending on the specification of the \code{method}.}
+\item{NormDS}{Normalized David's scores based on dyadic dominance indices corrected for chance or on proportions of wins in dyadic encounters.}
+\item{Stp}{Steepness value based on Normalized David's scores.}
+\item{interc}{Intercept of the fitted line based on Normalized David's scores.}
+\item{Stpsim}{The function provides results of the randomization procedure for the steepness measure based on \emph{NormDS}.}
 }
 
 \references{
@@ -72,8 +72,9 @@ X <- matrix(c(0,58,50,61,32,37,29,39,25,8,0,22,22,9,27,20,10,48,
 
 individuals <- c("V","VS","B","FJ","PR","VB","TOR","MU","ZV")
 
-steeptest(X, rep=9999, names=individuals, method="Dij", order=TRUE, option.console=TRUE)
-
+ STP <- steeptest(X, rep=9999, names=individuals, method="Dij", order=TRUE)
+ summary(STP)
+ plot(STP)
 }
 
 \keyword{misc}

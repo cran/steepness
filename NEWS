@@ -1,4 +1,10 @@
 -------------
+VERSION 0.2-2
+-------------
+* New methods for printing and summarizing steepness test and for plotting steepness in linear hierarchies.
+* Solved memory-access errors in steep.c code.
+
+-------------
 VERSION 0.2-1
 -------------
 *Some improvements in steep.c file for compatibility with R>=2.15.3.

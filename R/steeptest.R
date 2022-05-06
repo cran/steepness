@@ -7,7 +7,7 @@ steeptest <- function(X,rep,names=NULL,method=c("Dij","Pij"),order=TRUE){
   if (nrow(X) != ncol(X))
     return("Error: Matrix X is not square and can not be analyzed")
   
-  if ( is.na(X) || !is.numeric(X))
+  if ( sum(is.na(X))>0 || !is.numeric(X))
     return("Error: Sociomatrix must be numeric");  
    
 # Limit the number of replications #

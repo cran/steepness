@@ -2,8 +2,8 @@ plot.steeptest <- function (x,...) {
   
   if ((is.null(x$names)) && (length(x$names)<=15)) names <- paste('Ind.',1:nrow(x$matdom))
   if ((is.null(x$names)) && (length(x$names)>15)) names <- 1:nrow(x$matdom)
-  if ((nchar(x$names)<10) && (length(x$names)<=15)) names <- x$names
-  if ((nchar(x$names)>10) || (length(x$names)>15)) names <- 1:nrow(x$matdom)
+  if (sum(nchar(x$names)<10)==length(x$names) && (length(x$names)<=15)) names <- x$names
+  if (sum(nchar(x$names)<10)==length(x$names) || (length(x$names)>15)) names <- 1:nrow(x$matdom)
   
   SortNormDS <- sort(x$NormDS,decreasing=TRUE,index.return=TRUE)
   names <- names[SortNormDS$ix]

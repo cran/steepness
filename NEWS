@@ -1,4 +1,10 @@
 -------------
+VERSION 0.3-0
+-------------
+* Solved code problems when checking sociomatrices in main functions.
+* Updated way of using UseDynLib in NAMESPACE.
+
+-------------
 VERSION 0.2-2
 -------------
 * New methods for printing and summarizing steepness test and for plotting steepness in linear hierarchies.

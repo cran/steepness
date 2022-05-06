@@ -3,7 +3,7 @@
 getStp <- function(X,method=c("Dij","Pij")){
   if (nrow(X) != ncol(X)) 
     return("Error: Sociomatrix must be square");
-  if ( is.na(X) || !is.numeric(X))
+  if ( sum(is.na(X))>0 || !is.numeric(X))
     return("Error: Sociomatrix must be numeric");
   method <- match.arg(method)
   dyadc <- X + t(X);

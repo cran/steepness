@@ -1,4 +1,10 @@
-useDynLib(steepness)
+useDynLib(steepness, .registration = TRUE)
+
+importFrom("grDevices", "as.graphicsAnnot")
+importFrom("graphics", "abline", "axis", "box", "legend")
+importFrom("stats", "lm", "quantile", "var")
+
+
 export(getDij,getPij,getwl,getDS,getNormDS,getOrderedMatrix,getStp,steeptest)
 
 S3method(print,steeptest)
